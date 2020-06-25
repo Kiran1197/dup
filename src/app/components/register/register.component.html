@@ -1,0 +1,13 @@
+<form (ngSubmit)="onSubmit()" #RegisterForm="ngForm">
+  <p>
+ <mat-form-field>
+    <input matInput type="text" placeholder="Username" name="username" [(ngModel)]="user.userName" #username="ngModel" required>
+    <mat-error *ngIf="username.errors?.required">Username is required</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="password" placeholder="password" name="username" [(ngModel)]="user.password" #password="ngModel">
+    <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
+  </mat-form-field>
+ </p>
+  <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="RegisterForm.form.invalid" >Register</button>
+</form>

@@ -1,0 +1,46 @@
+<!-- <nav mat-tab-nav-bar animationDuration="2000ms">
+  <a mat-tab-link *ngFor="let route of routeDetails" [routerLink]="route.path"  routerLinkActive #rla="routerLinkActive"
+  [active]="rla.isActive"> {{route.path}}</a>
+  <router-outlet></router-outlet>
+</nav> -->
+<mat-tab-group>
+
+  <mat-tab label="Register">
+    <form (ngSubmit)="onRegister()" #RegisterForm="ngForm">
+      <p>
+     <mat-form-field>
+        <input matInput type="text" placeholder="Username" name="username" [(ngModel)]="user.userName" #username="ngModel" required>
+        <mat-error *ngIf="username.errors?.required">Username is required</mat-error>
+      </mat-form-field>
+      </p>
+      <p>
+      <mat-form-field>
+        <input matInput type="password" placeholder="password" name="username" [(ngModel)]="user.password" #password="ngModel">
+        <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
+      </mat-form-field>
+      </p>
+      <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="RegisterForm.form.invalid" >Register</button>
+    </form>
+  </mat-tab>
+
+
+  <mat-tab label="Login">
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <p>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Username" name="username" formControlName="userName">
+          <mat-error *ngIf="loginForm.get('userName').hasError('required') && loginForm.get('userName').touched">First name is required</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input matInput type="password" placeholder="password" name="password" formControlName="password">
+          <mat-error *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched">Password is required</mat-error>
+        </mat-form-field>
+      </p>
+        <mat-checkbox formControlName="remember" name="remember">Remember Me</mat-checkbox>
+        <button type="submit" mat-button class="background-primary text-floral-white" >Login</button>
+    </form>
+  </mat-tab>
+
+</mat-tab-group>

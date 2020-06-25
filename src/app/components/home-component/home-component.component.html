@@ -1,0 +1,15 @@
+
+<span class="material-icons" (click)="navBar()" style="margin-left: 3%;">
+  reorder
+  </span>
+  <div class="header-div" *ngIf="enable"><h1>Hello, {{enable}}</h1></div>
+<mat-sidenav-container *ngIf="enable">
+  <mat-sidenav>Start</mat-sidenav>
+  <mat-sidenav-content>Main</mat-sidenav-content>
+  <mat-sidenav-content>Main2</mat-sidenav-content>
+  <mat-sidenav-content>Main3</mat-sidenav-content>
+</mat-sidenav-container>
+
+<span class="flex-spacer"></span>
+<a mat-button (click)="openLoginForm()"><span class="fa fa-sign-in fa-lg"></span> Login</a>
+
